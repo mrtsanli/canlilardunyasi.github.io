@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Living World - Discover Life on Earth</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #52b788, #2d6a4f);
+            color: white;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .logo {
+            width: 60px;
+            height: 60px;
+            margin-right: 1rem;
+        }
+        
+        .title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .discover-btn {
+            background-color: #ff9800;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .discover-btn:hover {
+            background-color: #f57c00;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Navigation Bar Styles */
+        nav {
+            background-color: #40916c;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-items {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-item {
+            color: white;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Main Content Area Styles */
+        .main-content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            color: #2d6a4f;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: #52b788;
+            margin: 0.5rem auto;
+        }
+        
+        /* Popular Species Section */
+        .species-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .species-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .species-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        
+        .species-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .species-info {
+            padding: 1.5rem;
+        }
+        
+        .species-name {
+            font-size: 1.3rem;
+            color: #2d6a4f;
+            margin-bottom: 0.5rem;
+        }
+        
+        .species-desc {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .learn-more-btn {
+            display: inline-block;
+            background-color: #40916c;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .learn-more-btn:hover {
+            background-color: #2d6a4f;
+        }
+        
+        /* Recent Posts Section */
+        .posts-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .post-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .post-item:last-child {
+            border-bottom: none;
+        }
+        
+        .post-title {
+            font-size: 1.2rem;
+            color: #2d6a4f;
+            margin-bottom: 0.5rem;
+        }
+        
+        .post-excerpt {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .post-date {
+            color: #999;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: #2d6a4f;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon i {
+            color: #2d6a4f;
+            font-size: 1.2rem;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-info {
+            margin-bottom: 1rem;
+        }
+        
+        .contact-item {
+            margin-bottom: 0.5rem;
+        }
+        
+        .copyright {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-items {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: center;
+            }
+            
+            .species-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .title {
+                font-size: 2.3rem;
+            }
+        }
+    </style>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo-container">
+            <img src="/api/placeholder/60/60" alt="Living World Logo" class="logo">
+            <h1 class="title">Living World</h1>
+        </div>
+        <p class="subtitle">Welcome to the discovery of life on Earth!</p>
+        <button class="discover-btn">Discover It</button>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul class="nav-items">
+            <li><a href="#" class="nav-item">Home</a></li>
+            <li><a href="#" class="nav-item">About</a></li>
+            <li><a href="#" class="nav-item">Species</a></li>
+            <li><a href="#" class="nav-item">Images</a></li>
+            <li><a href="#" class="nav-item">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Popular Species Section -->
+        <section>
+            <h2 class="section-title">Popular Species</h2>
+            <div class="species-container">
+                <!-- Species Card 1 -->
+                <div class="species-card">
+                    <img src="/api/placeholder/300/200" alt="Polar Bear" class="species-img">
+                    <div class="species-info">
+                        <h3 class="species-name">Polar Bear</h3>
+                        <p class="species-desc">The polar bear is a hypercarnivorous bear whose native range lies largely within the Arctic Circle.</p>
+                        <a href="#" class="learn-more-btn">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Species Card 2 -->
+                <div class="species-card">
+                    <img src="/api/placeholder/300/200" alt="Amazon Rainforest Parrot" class="species-img">
+                    <div class="species-info">
+                        <h3 class="species-name">Amazon Parrot</h3>
+                        <p class="species-desc">Amazon parrots are known for their colorful appearance and exceptional ability to mimic human speech.</p>
+                        <a href="#" class="learn-more-btn">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Species Card 3 -->
+                <div class="species-card">
+                    <img src="/api/placeholder/300/200" alt="Bengal Tiger" class="species-img">
+                    <div class="species-info">
+                        <h3 class="species-name">Bengal Tiger</h3>
+                        <p class="species-desc">The Bengal tiger is a tiger subspecies native to the Indian subcontinent, currently listed as endangered.</p>
+                        <a href="#" class="learn-more-btn">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Species Card 4 -->
+                <div class="species-card">
+                    <img src="/api/placeholder/300/200" alt="Giant Panda" class="species-img">
+                    <div class="species-info">
+                        <h3 class="species-name">Giant Panda</h3>
+                        <p class="species-desc">The giant panda is a bear species endemic to China, recognized by its bold black-and-white coat.</p>
+                        <a href="#" class="learn-more-btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Recent Posts Section -->
+        <section>
+            <h2 class="section-title">Recent Posts</h2>
+            <div class="posts-container">
+                <!-- Post 1 -->
+                <div class="post-item">
+                    <h3 class="post-title">Discovering New Species in the Amazon Rainforest</h3>
+                    <p class="post-excerpt">Scientists have discovered over 10 new species of insects during their recent expedition to the Amazon rainforest...</p>
+                    <p class="post-date">March 5, 2025</p>
+                </div>
+                
+                <!-- Post 2 -->
+                <div class="post-item">
+                    <h3 class="post-title">The Impact of Climate Change on Arctic Wildlife</h3>
+                    <p class="post-excerpt">A new study reveals how rapidly changing Arctic conditions are affecting wildlife habitats and migration patterns...</p>
+                    <p class="post-date">February 28, 2025</p>
+                </div>
+                
+                <!-- Post 3 -->
+                <div class="post-item">
+                    <h3 class="post-title">Conservation Success: Increasing Tiger Population in India</h3>
+                    <p class="post-excerpt">After decades of conservation efforts, India reports a significant increase in its Bengal tiger population...</p>
+                    <p class="post-date">February 20, 2025</p>
+                </div>
+                
+                <!-- Post 4 -->
+                <div class="post-item">
+                    <h3 class="post-title">The Secret Life of Deep Sea Creatures</h3>
+                    <p class="post-excerpt">Exploring the fascinating adaptations and behaviors of creatures living in the deepest parts of our oceans...</p>
+                    <p class="post-date">February 12, 2025</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+        
+        <div class="contact-info">
+            <p class="contact-item"><i class="fas fa-envelope"></i> contact@livingworld.org</p>
+            <p class="contact-item"><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+            <p class="contact-item"><i class="fas fa-map-marker-alt"></i> 123 Nature Street, Earth City, Planet Earth</p>
+        </div>
+        
+        <p class="copyright">© 2025 Living World. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript for interactive elements
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Discover button functionality
+            const discoverBtn = document.querySelector('.discover-btn');
+            discoverBtn.addEventListener('click', function() {
+                // Smooth scroll to species section
+                const speciesSection = document.querySelector('.species-container');
+                speciesSection.scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            // Navigation active state
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Remove active class from all items
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    // Add active class to clicked item
+                    this.classList.add('active');
+                });
+            });
+            
+            // Species cards hover effect enhancement
+            const speciesCards = document.querySelectorAll('.species-card');
+            speciesCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Simple image slider functionality (can be expanded)
+            let currentSpeciesIndex = 0;
+            const speciesCards = document.querySelectorAll('.species-card');
+            
+            function showNextSpecies() {
+                // Hide all species cards
+                speciesCards.forEach(card => {
+                    card.style.opacity = '0.6';
+                    card.style.transform = 'scale(0.95)';
+                });
+                
+                // Show current species card
+                currentSpeciesIndex = (currentSpeciesIndex + 1) % speciesCards.length;
+                speciesCards[currentSpeciesIndex].style.opacity = '1';
+                speciesCards[currentSpeciesIndex].style.transform = 'scale(1.05)';
+            }
+            
+            // Auto-rotate species showcase every 5 seconds (uncomment to activate)
+            // setInterval(showNextSpecies, 5000);
+        });
+    </script>
+</body>
+</html>
